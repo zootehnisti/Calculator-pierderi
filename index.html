@@ -3,142 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator Pierderi Ascunse - Fermă Lapte</title>
+    <title>Audit Pierderi Ascunse - Luna Anterioară</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        @media print {
-            body { background: white; color: black; }
-            .no-print { display: none !important; }
-            .print-card { border: 1px solid #ccc; box-shadow: none !important; }
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen pb-12">
 
-    <header class="bg-emerald-700 text-white shadow-md no-print">
-        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+    <header class="bg-emerald-800 text-white shadow-md">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center max-w-5xl">
             <div class="flex items-center space-x-3">
                 <span class="text-3xl">🐄</span>
                 <div>
-                    <h1 class="text-2xl font-bold tracking-tight">EcoDairy</h1>
-                    <p class="text-xs text-emerald-100">Calculatorul Pierderilor Economice Ascunse</p>
+                    <h1 class="text-2xl font-bold tracking-tight">EcoDairy Audit</h1>
+                    <p class="text-xs text-emerald-100">Analiza Pierderilor Ascunse Strict pe Luna Anterioară</p>
                 </div>
             </div>
-            <p class="text-sm mt-2 md:mt-0 bg-emerald-800 px-3 py-1 rounded-full text-emerald-200">
-                Analiză bazată pe Luna Anterioară
-            </p>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8 max-w-5xl">
-        <div class="mb-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 no-print">
-            <h2 class="text-xl font-semibold text-gray-900 mb-2">Descoperă costurile invizibile din ferma ta</h2>
-            <p class="text-gray-600 text-sm leading-relaxed">
-                Multe dintre pierderile unei ferme de vaci de lapte nu vin din facturile de medicamente, ci din laptele nerealizat sau zilele pierdute de reproducție. Introdu datele din luna anterioară pentru a vedea impactul real.
-            </p>
-        </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="md:col-span-2 space-y-6 no-print">
+            
+            <div class="md:col-span-2 space-y-6">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="text-emerald-600">⚙️</span> Date Generale de Referință
-                    </h3>
+                    <h3 class="text-base font-bold text-gray-900 mb-4 uppercase tracking-wider text-emerald-700">⚙️ Setări Lunare de Referință</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Preț Lapte (EUR / kg)</label>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Preț Lapte în Luna Trecută (EUR / kg)</label>
                             <input type="number" id="pretLapte" value="0.50" step="0.01" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Producție Medie Zilnică (kg/vacă)</label>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Producție Medie Zilnică / Vacă (kg)</label>
                             <input type="number" id="prodMedie" value="30" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6">
-                    <h3 class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
-                        <span class="text-emerald-600">📊</span> Date Patologii în Luna Anterioară
-                    </h3>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-5">
+                    <h3 class="text-base font-bold text-gray-900 mb-2 uppercase tracking-wider text-emerald-700">📊 Cazuri Înregistrate în Luna Anterioară</h3>
 
-                    <div class="border-b border-gray-100 pb-4">
-                        <label class="block text-sm font-bold text-gray-800 mb-1">Mastite Clinice (cazuri noi)</label>
-                        <p class="text-xs text-gray-500 mb-2">Generează reținere de lapte și scăderi de producție pe termen lung.</p>
-                        <input type="number" id="cazuriMastita" value="0" min="0" class="w-full sm:w-1/3 border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-emerald-500">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-800">Mastite Clinice (cazuri noi în lună)</label>
+                            <span class="text-xs text-gray-500">Pierdere: 5 zile de lapte aruncat la muls + 10% scădere producție în restul lunii (estimare medie din studii de caz).</span>
+                        </div>
+                        <input type="number" id="cazuriMastita" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
-                    <div class="border-b border-gray-100 pb-4">
-                        <label class="block text-sm font-bold text-gray-800 mb-1">Laminite / Șchiopătări (cazuri active)</label>
-                        <p class="text-xs text-gray-500 mb-2">Provoacă stres cronic, reducerea hrănirii și reformă timpurie.</p>
-                        <input type="number" id="cazuriLaminite" value="0" min="0" class="w-full sm:w-1/3 border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-emerald-500">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-800">Laminite / Șchiopătări (cazuri active)</label>
+                            <span class="text-xs text-gray-500">Pierdere indirectă: scădere medie de 1.5 kg lapte/zi pe perioada lunii din cauza durerii și stresului de deplasare.</span>
+                        </div>
+                        <input type="number" id="cazuriLaminite" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
-                    <div class="border-b border-gray-100 pb-4">
-                        <label class="block text-sm font-bold text-gray-800 mb-1">Cetoze Subclinice / Clinice (cazuri)</label>
-                        <p class="text-xs text-gray-500 mb-2">Apar în faza de deficit energetic, reducând masiv vârful de lactație.</p>
-                        <input type="number" id="cazuriCetoze" value="0" min="0" class="w-full sm:w-1/3 border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-emerald-500">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-800">Cetoze Clinice/Subclinice (cazuri depistate)</label>
+                            <span class="text-xs text-gray-500">Pierdere: deficit metabolic ce cauzează o pierdere invizibilă de cca. 2 kg lapte/zi de animal pe parcursul lunii.</span>
+                        </div>
+                        <input type="number" id="cazuriCetoze" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-bold text-gray-800 mb-1">Cicluri de Estru Ratate (număr total)</label>
-                        <p class="text-xs text-gray-500 mb-2">Fiecare călduri ratate prelungesc perioada de "zile goale" cu 21 de zile.</p>
-                        <input type="number" id="estruRatat" value="0" min="0" class="w-full sm:w-1/3 border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-emerald-500">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-2">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-800">Cicluri de Estru Ratate (număr total în lună)</label>
+                            <span class="text-xs text-gray-500">Fiecare ciclu ratat adaugă 21 de zile goale. Cost de furajare/întreținere ineficientă evaluat strict la 3.5 EUR / zi goală.</span>
+                        </div>
+                        <input type="number" id="estruRatat" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
                     <button onclick="calculeazaPierderi()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl transition duration-200 shadow-md cursor-pointer text-center">
-                        Calculează Pierderile Lunare
+                        Generează Raportul Lunar
                     </button>
                 </div>
             </div>
 
-            <div id="raportSectiune" class="md:col-span-1 space-y-6">
-                <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 rounded-2xl shadow-lg print-card">
-                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Pierderi Ascunse Total</h3>
+            <div class="space-y-6">
+                <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Total Pierderi Ascunse (Luna Trecută)</h3>
                     <div class="text-4xl font-extrabold text-emerald-400 mb-4" id="totalGeneral">0.00 EUR</div>
-                    <p class="text-xs text-slate-300 leading-snug">
-                        Calcul estimat pentru luna anterioară bazat pe indici economici standardizați.
-                    </p>
-                    <button onclick="window.print()" class="mt-4 w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-sm py-2 px-3 rounded-lg transition no-print font-medium cursor-pointer">
-                        🖨️ Imprimă Raportul Detaliat
+                    <button onclick="descarcaPDF()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 px-4 rounded-xl transition cursor-pointer text-center text-sm shadow-sm">
+                        📥 Descarcă Raportul PDF
                     </button>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4 print-card">
-                    <h4 class="text-sm font-bold text-gray-950 uppercase tracking-wide border-b border-gray-100 pb-2">Defalcare Pierderi</h4>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-gray-600">🥛 Mastite (Lapte pierdut)</span>
-                        <span class="font-semibold text-gray-900" id="defalcareMastita">0.00 EUR</span>
+                <div id="zonaDocumentPDF" class="bg-white p-6 rounded-2xl border border-gray-200 space-y-6">
+                    <div class="border-b-2 border-emerald-800 pb-3">
+                        <h2 class="text-xl font-bold text-emerald-900">RAPORT AUDIT ECONOMIC LUNAR</h2>
+                        <p class="text-xs text-gray-500">Analiză amănunțită a costurilor indirecte și ascunse din fermă</p>
                     </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-gray-600">🦶 Laminite (Lapte + Reformă)</span>
-                        <span class="font-semibold text-gray-900" id="defalcareLaminite">0.00 EUR</span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-gray-600">🔋 Cetoze (Energie/Producție)</span>
-                        <span class="font-semibold text-gray-900" id="defalcareCetoze">0.00 EUR</span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-gray-600">🧬 Ratare Estru (Zile Goale)</span>
-                        <span class="font-semibold text-gray-900" id="defalcareEstru">0.00 EUR</span>
-                    </div>
-                </div>
 
-                <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 space-y-3 print-card">
-                    <h4 class="text-sm font-bold text-emerald-950 uppercase tracking-wide">💡 Soluții Digitale Recomandate</h4>
-                    <p class="text-xs text-emerald-800 leading-relaxed">
-                        Pentru a elimina aceste pierderi ascunse, tehnologiile moderne oferă monitorizare automatizată:
-                    </p>
-                    <ul class="text-xs text-emerald-950 space-y-2 list-disc pl-4">
-                        <li><strong>Senzori de Mastită:</strong> Senzori de conductivitate electrică integrați în linia de muls (depistare timpurie).</li>
-                        <li><strong>Pedometre / Accelerometre 3D:</strong> Brățări de picior pentru monitorizarea comportamentului de mers (detectează laminitele cu 3-5 zile înainte de semnele clinice).</li>
-                    </ul>
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">Defalcare Pierderi Recurente</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between border-b border-gray-100 pb-1">
+                                <span class="text-gray-600">🥛 Mastite (Lapte reținut + scădere lunară)</span>
+                                <span class="font-bold text-gray-900" id="pdfMastita">0.00 EUR</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-100 pb-1">
+                                <span class="text-gray-600">🦶 Laminite (Scădere randament zilnic)</span>
+                                <span class="font-bold text-gray-900" id="pdfLaminite">0.00 EUR</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-100 pb-1">
+                                <span class="text-gray-600">🔋 Cetoze (Pierderi subclinice de producție)</span>
+                                <span class="font-bold text-gray-900" id="pdfCetoze">0.00 EUR</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-100 pb-1">
+                                <span class="text-gray-600">🧬 Reproducție (Zile Goale generate în lună)</span>
+                                <span class="font-bold text-gray-900" id="pdfEstru">0.00 EUR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <h4 class="text-xs font-bold text-emerald-900 uppercase mb-1">📡 Tehnologii Digitale Recomandate</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            Pentru eliminarea acestor pierderi în lunile următoare, se sugerează implementarea de:
+                            <br>• <strong>Senzori de conductivitate</strong> în linia de muls (Mastită).
+                            <br>• <strong>Pedometre active / Accelerometre 3D</strong> (Laminite și detecție călduri).
+                            <br>• <strong>Sisteme de monitorizare a rumegării</strong> (Cetoze subclinice).
+                        </p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </main>
 
     <script>
         function calculeazaPierderi() {
+            // Intrări
             const pretLapte = parseFloat(document.getElementById('pretLapte').value) || 0;
             const prodMedie = parseFloat(document.getElementById('prodMedie').value) || 0;
             
@@ -147,20 +143,47 @@
             const cazuriCetoze = parseInt(document.getElementById('cazuriCetoze').value) || 0;
             const estruRatat = parseInt(document.getElementById('estruRatat').value) || 0;
 
-            const pierdereLapteMastita = (5 * prodMedie) + 250;
-            const costMastita = cazuriMastita * pierdereLapteMastita * pretLapte;
+            // FORMULE STRICT LUNARE (Pierderi pe parcursul celor 30 de zile ale lunii anterioare)
+            // Mastită lunară: 5 zile lapte aruncat complet + pierdere de 10% din producție pe restul de 25 de zile ale lunii
+            const laptePierdutMastitaLuna = (5 * prodMedie) + (25 * (prodMedie * 0.10));
+            const costMastita = cazuriMastita * laptePierdutMastitaLuna * pretLapte;
 
-            const costLaminite = cazuriLaminite * ((350 * pretLapte) + 60);
-            const costCetoze = cazuriCetoze * (200 * pretLapte);
+            // Laminită lunară: Stresul cronic scade producția cu ~1.5 kg/zi pe parcursul lunii (30 de zile)
+            const costLaminite = cazuriLaminite * (1.5 * 30 * pretLapte);
+
+            // Cetoză lunară: Scădere de ~2 kg/zi pe parcursul lunii (30 de zile) din cauza deficitului energetic
+            const costCetoze = cazuriCetoze * (2 * 30 * pretLapte);
+
+            // Estrul ratat în acea lună: Un estru ratat prelungește perioada cu exact 21 de zile. Cost fix de mentenanță ineficientă: 21 zile * 3.5 EUR/zi
             const costEstru = estruRatat * (21 * 3.5);
 
+            // Calcul Total General
             const totalGeneral = costMastita + costLaminite + costCetoze + costEstru;
 
-            document.getElementById('defalcareMastita').innerText = costMastita.toFixed(2) + ' EUR';
-            document.getElementById('defalcareLaminite').innerText = costLaminite.toFixed(2) + ' EUR';
-            document.getElementById('defalcareCetoze').innerText = costCetoze.toFixed(2) + ' EUR';
-            document.getElementById('defalcareEstru').innerText = costEstru.toFixed(2) + ' EUR';
+            // Actualizare interfață și secțiune PDF
             document.getElementById('totalGeneral').innerText = totalGeneral.toFixed(2) + ' EUR';
+            document.getElementById('pdfMastita').innerText = costMastita.toFixed(2) + ' EUR';
+            document.getElementById('pdfLaminite').innerText = costLaminite.toFixed(2) + ' EUR';
+            document.getElementById('pdfCetoze').innerText = costCetoze.toFixed(2) + ' EUR';
+            document.getElementById('pdfEstru').innerText = costEstru.toFixed(2) + ' EUR';
+        }
+
+        function descarcaPDF() {
+            // Rulăm calculul din nou pentru siguranța datelor proaspete
+            calculeazaPierderi();
+            
+            // Configurarea descărcării librăriei html2pdf
+            const element = document.getElementById('zonaDocumentPDF');
+            const opt = {
+                margin:       0.5,
+                filename:     'Raport_Pierderi_Ascunse_Luna_Anterioara.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Executarea descărcării native în browser
+            html2pdf().set(opt).from(element).save();
         }
     </script>
 </body>
