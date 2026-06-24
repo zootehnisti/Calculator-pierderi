@@ -1,4 +1,4 @@
-# 🐄 Calculatorpierderi lunare
+# 🐄 Calculator pierderi lunare
 
 Acest instrument este conceput pentru a ajuta fermierii și specialiștii în zootehnie să identifice și să cuantifice pierderile economice "invizibile" din ferma de vaci de lapte.
 
