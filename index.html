@@ -3,194 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert Audit Zootehnic - Drd. Gabriela Amariții</title>
+    <title>Calculator Pierderi Ascunse - Fermă Lapte</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        :root { 
-            --primary: #1b5e20; 
-            --secondary: #2e7d32; 
-            --accent: #c62828; 
-            --bg: #f4f7f4; 
-            --text: #2c3e50;
-        }
-        body { 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
-            background-color: var(--bg); 
-            margin: 0; 
-            padding: 20px; 
-            color: var(--text); 
-            line-height: 1.6;
-        }
-        .container { 
-            max-width: 900px; 
-            background: white; 
-            padding: 40px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            margin: 20px auto; 
-        }
-        h1, h2, h3 { color: var(--primary); text-align: center; }
-        h1 { border-bottom: 4px solid var(--secondary); padding-bottom: 15px; margin-top: 0; }
-        
-        .grid-inputs { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 25px; 
-            margin-top: 30px; 
-            background: #f9fbf9;
-            padding: 25px;
-            border-radius: 15px;
-        }
-        .input-box label { 
-            display: block; 
-            font-weight: bold; 
-            margin-bottom: 8px; 
-            font-size: 0.9em; 
-        }
-        input { 
-            width: 100%; 
-            padding: 12px; 
-            border: 2px solid #ddd; 
-            border-radius: 8px; 
-            box-sizing: border-box;
-            font-size: 1em;
-        }
-        input:focus { border-color: var(--secondary); outline: none; }
-        
-        button { 
-            width: 100%; 
-            background: var(--primary); 
-            color: white; 
-            border: none; 
-            padding: 20px; 
-            margin-top: 30px; 
-            border-radius: 12px; 
-            font-size: 1.25em; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: 0.3s; 
-        }
-        button:hover { background: var(--secondary); transform: translateY(-2px); }
-
-        #rezultat { 
-            margin-top: 30px; 
-            padding: 30px; 
-            border-radius: 15px; 
-            background: #e8f5e9; 
-            display: none; 
-            border-left: 10px solid var(--primary); 
-        }
-        
-        .readme-section {
-            margin-top: 50px;
-            padding: 30px;
-            background: #fff;
-            border-top: 5px solid var(--primary);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .metric-card {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border-bottom: 2px solid #eee;
+        @media print {
+            body { background: white; color: black; }
+            .no-print { display: none !important; }
+            .print-card { border: 1px solid #ccc; box-shadow: none !important; }
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen">
 
-<div class="container">
-    <h1>🐄 Audit Economic Anual - Ferma de Vaci</h1>
-    <p style="text-align: center; font-style: italic;">Instrument de calcul pentru identificarea pierderilor invizibile din exploatație.</p>
-    
-    <div class="grid-inputs">
-        <div class="input-box"><label>Efectiv total (vaci):</label><input type="number" id="vaci" value="100"></div>
-        <div class="input-box"><label>Producție medie ANUALĂ (L/vaca):</label><input type="number" id="prod_an" value="9500"></div>
-        <div class="input-box"><label>Preț lapte (RON/L):</label><input type="number" id="pret" value="2.15"></div>
-        <div class="input-box"><label>Cazuri Mamite pe AN:</label><input type="number" id="mami_an" value="45"></div>
-        <div class="input-box"><label>Cazuri Cetoze pe AN:</label><input type="number" id="ceto_an" value="25"></div>
-        <div class="input-box"><label>Rată Reformă ANUALĂ (%):</label><input type="number" id="refo_an" value="32"></div>
-    </div>
-
-    <button onclick="calculeazaAudit()">📊 Calculează Impactul Economic Anual</button>
-
-    <div id="rezultat">
-        <h2 style="margin-top:0;">📋 Raport de Audit (Estimări Anuale)</h2>
-        <div class="metric-card" id="res_mami"></div>
-        <div class="metric-card" id="res_ceto"></div>
-        <div class="metric-card" id="res_refo"></div>
-        <div class="metric-card" style="background: var(--primary); color: white;">
-            <strong id="res_total"></strong>
+    <header class="bg-emerald-700 text-white shadow-md no-print">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🐄</span>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">EcoDairy</h1>
+                    <p class="text-xs text-emerald-100">Calculatorul Pierderilor Economice Ascunse</p>
+                </div>
+            </div>
+            <p class="text-sm mt-2 md:mt-0 bg-emerald-800 px-3 py-1 rounded-full text-emerald-200">
+                Analiză bazată pe Luna Anterioară
+            </p>
         </div>
-        <p id="recomandare" style="font-weight:bold; margin-top:20px; color: var(--primary);"></p>
-    </div>
-</div>
+    </header>
 
-<div class="container readme-section">
-    <h2>🔬 Fundamentare Științifică (README)</h2>
-    <p>Acest instrument transformă datele tehnice în argumente economice clare pentru investiții în digitalizare.</p>
-    
-    <div style="text-align: left; padding: 10px;">
-        <h3>💰 Identificarea Pierderilor Ascunse</h3>
-        <ul>
-            <li><strong>Mamite:</strong> Cuantifică laptele aruncat, costul tratamentului și scăderea productivității pe lactația curentă.</li>
-            <li><strong>Cetoze Subclinice:</strong> Impactul metabolic asupra producției de vârf și a indicelui de reproducție.</li>
-            <li><strong>Rata de Reformă:</strong> Costul înlocuirii premature a animalelor cu valoare genetică ridicată.</li>
-        </ul>
+    <main class="container mx-auto px-4 py-8 max-w-5xl">
+        <div class="mb-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 no-print">
+            <h2 class="text-xl font-semibold text-gray-900 mb-2">Descoperă costurile invizibile din ferma ta</h2>
+            <p class="text-gray-600 text-sm leading-relaxed">
+                Multe dintre pierderile unei ferme de vaci de lapte nu vin din facturile de medicamente, ci din laptele nerealizat sau zilele pierdute de reproducție. Introdu datele din luna anterioară pentru a vedea impactul real.
+            </p>
+        </div>
 
-        <h3>📊 Decizii pentru Investiții PLF</h3>
-        <p>Rezultatele susțin necesitatea implementării senzorilor de muls, a celor de rumegare și a software-ului de management integrat.</p>
-    </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-2 space-y-6 no-print">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <span class="text-emerald-600">⚙️</span> Date Generale de Referință
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Preț Lapte (EUR / kg)</label>
+                            <input type="number" id="pretLapte" value="0.50" step="0.01" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Producție Medie Zilnică (kg/vacă)</label>
+                            <input type="number" id="prodMedie" value="30" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                        </div>
+                    </div>
+                </div>
 
-    <hr>
-    <div style="text-align: center; margin-top: 20px;">
-        <p><strong>Autor:</strong> Drd. Ing. Gabriela Amariții</p>
-        <p><em>Expertiză în digitizarea fermelor zootehnice și tehnologii AI</em></p>
-        <p>Contact: <a href="mailto:amaritiigabriela@gmail.com">amaritiigabriela@gmail.com</a></p>
-    </div>
-</div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+                        <span class="text-emerald-600">📊</span> Date Patologii în Luna Anterioară
+                    </h3>
 
-<script>
-function calculeazaAudit() {
-    // Preluare valori
-    const vaci = parseFloat(document.getElementById('vaci').value) || 0;
-    const prodAn = parseFloat(document.getElementById('prod_an').value) || 0;
-    const pret = parseFloat(document.getElementById('pret').value) || 0;
-    const mamiAn = parseFloat(document.getElementById('mami_an').value) || 0;
-    const cetoAn = parseFloat(document.getElementById('ceto_an').value) || 0;
-    const refoAn = parseFloat(document.getElementById('refo_an').value) || 0;
+                    <div class="border-b border-gray-100 pb-4">
+                        <label class="block text-sm font-bold text-gray-800 mb-1">Mastite Clinice (cazuri noi)</label>
+                        <p class="text-xs text-gray-500 mb-2">Generează reținere de lapte și scăderi de producție pe termen lung.</p>
+                        <input type="number" id="cazuriMastita" value="0" min="0" class="w-full sm:w-1/3 border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-emerald-500">
+                    </div>
 
-    // Formule Anuale bazate pe literatura de specialitate
-    // 1. Mamite: Tratament (350 RON) + Lapte pierdut/scazut (~500L x pret)
-    let pierdereMami = mamiAn * (350 + (550 * pret));
-    
-    // 2. Cetoze: Scadere productie (~400L) + Impact reproductie (250 RON)
-    let pierdereCeto = cetoAn * ((400 * pret) + 250);
-    
-    // 3. Reforma: Diferenta fata de rata optima de 28%
-    let pierdereRefo = (refoAn > 28) ? (vaci * (refoAn - 28) * 110) : 0;
+                    <div class="border-b border-gray-100 pb-4">
+                        <label class="block text-sm font-bold text-gray-800 mb-1">Laminite / Șchiopătări (cazuri active)</label>
+                        <p class="text-xs text-gray-500 mb-2">Provoacă stres cronic, reducerea hrănirii și reformă timpurie.</p>
+                        <input type="number" id="cazuriLaminite" value="0" min="0" class="w-full sm:w-1/3 border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-emerald-500">
+                    </div>
 
-    let totalAnual = pierdereMami + pierdereCeto + pierdereRefo;
+                    <div class="border-b border-gray-100 pb-4">
+                        <label class="block text-sm font-bold text-gray-800 mb-1">Cetoze Subclinice / Clinice (cazuri)</label>
+                        <p class="text-xs text-gray-500 mb-2">Apar în faza de deficit energetic, reducând masiv vârful de lactație.</p>
+                        <input type="number" id="cazuriCetoze" value="0" min="0" class="w-full sm:w-1/3 border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-emerald-500">
+                    </div>
 
-    // Afisare rezultate formatate
-    document.getElementById('res_mami').innerHTML = "🛑 <b>Sănătatea Ugerului (Anual):</b> " + pierdereMami.toLocaleString('ro-RO') + " RON";
-    document.getElementById('res_ceto').innerHTML = "🧪 <b>Tulburări Metabolice (Anual):</b> " + pierdereCeto.toLocaleString('ro-RO') + " RON";
-    document.getElementById('res_refo').innerHTML = "📉 <b>Managementul Longevității:</b> " + pierdereRefo.toLocaleString('ro-RO') + " RON";
-    document.getElementById('res_total').innerHTML = "💰 TOTAL PIERDERI ESTIMATE: " + totalAnual.toLocaleString('ro-RO') + " RON / AN";
+                    <div>
+                        <label class="block text-sm font-bold text-gray-800 mb-1">Cicluri de Estru Ratate (număr total)</label>
+                        <p class="text-xs text-gray-500 mb-2">Fiecare călduri ratate prelungesc perioada de "zile goale" cu 21 de zile.</p>
+                        <input type="number" id="estruRatat" value="0" min="0" class="w-full sm:w-1/3 border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-emerald-500">
+                    </div>
 
-    // Recomandare asertivă
-    let reco = "";
-    if(totalAnual > 50000) {
-        reco = "⚡ Recomandare de Audit: Pierderile depășesc pragul critic. Se recomandă implementarea imediată a senzorilor de monitorizare individuală (Digital Twin).";
-    } else {
-        reco = "✅ Status: Parametrii sunt sub control, dar se recomandă digitalizarea pentru menținerea performanței.";
-    }
-    
-    document.getElementById('recomandare').innerHTML = reco;
-    document.getElementById('rezultat').style.display = 'block';
-    document.getElementById('rezultat').scrollIntoView({ behavior: 'smooth' });
-}
-</script>
+                    <button onclick="calculeazaPierderi()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl transition duration-200 shadow-md cursor-pointer text-center">
+                        Calculează Pierderile Lunare
+                    </button>
+                </div>
+            </div>
 
+            <div id="raportSectiune" class="md:col-span-1 space-y-6">
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 rounded-2xl shadow-lg print-card">
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Pierderi Ascunse Total</h3>
+                    <div class="text-4xl font-extrabold text-emerald-400 mb-4" id="totalGeneral">0.00 EUR</div>
+                    <p class="text-xs text-slate-300 leading-snug">
+                        Calcul estimat pentru luna anterioară bazat pe indici economici standardizați.
+                    </p>
+                    <button onclick="window.print()" class="mt-4 w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 text-sm py-2 px-3 rounded-lg transition no-print font-medium cursor-pointer">
+                        🖨️ Imprimă Raportul Detaliat
+                    </button>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4 print-card">
+                    <h4 class="text-sm font-bold text-gray-950 uppercase tracking-wide border-b border-gray-100 pb-2">Defalcare Pierderi</h4>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-gray-600">🥛 Mastite (Lapte pierdut)</span>
+                        <span class="font-semibold text-gray-900" id="defalcareMastita">0.00 EUR</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-gray-600">🦶 Laminite (Lapte + Reformă)</span>
+                        <span class="font-semibold text-gray-900" id="defalcareLaminite">0.00 EUR</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-gray-600">🔋 Cetoze (Energie/Producție)</span>
+                        <span class="font-semibold text-gray-900" id="defalcareCetoze">0.00 EUR</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-gray-600">🧬 Ratare Estru (Zile Goale)</span>
+                        <span class="font-semibold text-gray-900" id="defalcareEstru">0.00 EUR</span>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 space-y-3 print-card">
+                    <h4 class="text-sm font-bold text-emerald-950 uppercase tracking-wide">💡 Soluții Digitale Recomandate</h4>
+                    <p class="text-xs text-emerald-800 leading-relaxed">
+                        Pentru a elimina aceste pierderi ascunse, tehnologiile moderne oferă monitorizare automatizată:
+                    </p>
+                    <ul class="text-xs text-emerald-950 space-y-2 list-disc pl-4">
+                        <li><strong>Senzori de Mastită:</strong> Senzori de conductivitate electrică integrați în linia de muls (depistare timpurie).</li>
+                        <li><strong>Pedometre / Accelerometre 3D:</strong> Brățări de picior pentru monitorizarea comportamentului de mers (detectează laminitele cu 3-5 zile înainte de semnele clinice).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function calculeazaPierderi() {
+            const pretLapte = parseFloat(document.getElementById('pretLapte').value) || 0;
+            const prodMedie = parseFloat(document.getElementById('prodMedie').value) || 0;
+            
+            const cazuriMastita = parseInt(document.getElementById('cazuriMastita').value) || 0;
+            const cazuriLaminite = parseInt(document.getElementById('cazuriLaminite').value) || 0;
+            const cazuriCetoze = parseInt(document.getElementById('cazuriCetoze').value) || 0;
+            const estruRatat = parseInt(document.getElementById('estruRatat').value) || 0;
+
+            const pierdereLapteMastita = (5 * prodMedie) + 250;
+            const costMastita = cazuriMastita * pierdereLapteMastita * pretLapte;
+
+            const costLaminite = cazuriLaminite * ((350 * pretLapte) + 60);
+            const costCetoze = cazuriCetoze * (200 * pretLapte);
+            const costEstru = estruRatat * (21 * 3.5);
+
+            const totalGeneral = costMastita + costLaminite + costCetoze + costEstru;
+
+            document.getElementById('defalcareMastita').innerText = costMastita.toFixed(2) + ' EUR';
+            document.getElementById('defalcareLaminite').innerText = costLaminite.toFixed(2) + ' EUR';
+            document.getElementById('defalcareCetoze').innerText = costCetoze.toFixed(2) + ' EUR';
+            document.getElementById('defalcareEstru').innerText = costEstru.toFixed(2) + ' EUR';
+            document.getElementById('totalGeneral').innerText = totalGeneral.toFixed(2) + ' EUR';
+        }
+    </script>
 </body>
 </html>
