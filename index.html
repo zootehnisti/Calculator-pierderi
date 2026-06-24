@@ -30,7 +30,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Preț Lapte în Luna Trecută (LEI / kg)</label>
-                            <input type="number" id="pretLapte" value="2.30" step="0.01" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none font-medium">
+                            <input type="number" id="pretLapte" value="2.30" step="0.01" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-emerald-500 focus:outline-none font-medium text-gray-900 bg-gray-50">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Producție Medie Zilnică / Vacă (kg)</label>
@@ -134,7 +134,7 @@
 
     <script>
         function calculeazaPierderi() {
-            // Preluarea dinamică a prețului introdus de utilizator în inputul 'pretLapte'
+            // Preluarea dinamică a prețului în LEI introdus de utilizator
             const pretLapte = parseFloat(document.getElementById('pretLapte').value) || 0;
             const prodMedie = parseFloat(document.getElementById('prodMedie').value) || 0;
             
@@ -143,18 +143,18 @@
             const cazuriCetoze = parseInt(document.getElementById('cazuriCetoze').value) || 0;
             const estruRatat = parseInt(document.getElementById('estruRatat').value) || 0;
 
-            // FORMULE STRUCTURATE PE LUNA ANTERIOARĂ (30 de zile)
-            // 1. Mastită: 5 zile lapte aruncat complet la muls + 10% pierdere de randament pe restul de 25 de zile ale lunii
+            // FORMULE STRUCTURATE PE LUNA ANTERIOARĂ (30 de zile) EXPRIMATE ÎN LEI
+            // 1. Mastită: 5 zile lapte aruncat complet la muls + 10% pierdere pe restul de 25 de zile ale lunii
             const laptePierdutMastitaLuna = (5 * prodMedie) + (25 * (prodMedie * 0.10));
             const costMastita = cazuriMastita * laptePierdutMastitaLuna * pretLapte;
 
             // 2. Laminită: scădere de ~1.5 kg/zi timp de 30 de zile + cost estimat indirect reformă de 300 LEI asociat cazului
             const costLaminite = cazuriLaminite * ((1.5 * 30 * pretLapte) + 300);
 
-            // 3. Cetoză: scădere de ~2 kg/zi timp de 30 de zile pe fondul deficitului energetic subclinic
+            // 3. Cetoză: scădere de ~2 kg/zi timp de 30 de zile din cauza deficitului energetic subclinic
             const costCetoze = cazuriCetoze * (2 * 30 * pretLapte);
 
-            // 4. Estru ratat: 21 de zile de stagnare reproductivă (zile goale) multiplied by cost de oportunitate (17.50 LEI/zi)
+            // 4. Estru ratat: 21 de zile de stagnare reproductivă multiplied by cost de oportunitate (17.50 LEI/zi)
             const costEstru = estruRatat * (21 * 17.50);
 
             // Suma Totală Generală a pierderilor ascunse
