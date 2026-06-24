@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dairy Audit - Luna Anterioară</title>
-    <!-- Tailwind CSS pentru design modern -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Versiune stabilă html2pdf.js pentru export PDF corect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen pb-12">
 
-    <!-- Header Aplicație -->
     <header class="bg-emerald-800 text-white shadow-md">
         <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center max-w-5xl">
             <div class="flex items-center space-x-3">
@@ -24,13 +21,10 @@
         </div>
     </header>
 
-    <!-- Conținut Principal -->
     <main class="container mx-auto px-4 py-8 max-w-5xl">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <!-- COLOANA STÂNGA: INTRODUCERE DATE -->
             <div class="md:col-span-2 space-y-6">
-                <!-- Setări de bază -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                     <h3 class="text-base font-bold text-gray-900 mb-4 uppercase tracking-wider text-emerald-700">⚙️ Setări Lunare de Referință</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -45,11 +39,9 @@
                     </div>
                 </div>
 
-                <!-- Secțiune Date Patologii -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-5">
                     <h3 class="text-base font-bold text-gray-900 mb-2 uppercase tracking-wider text-emerald-700">📊 Cazuri Înregistrate în Luna Anterioară</h3>
 
-                    <!-- Mastite -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-800">Mastite Clinice (cazuri noi în lună)</label>
@@ -58,16 +50,14 @@
                         <input type="number" id="cazuriMastita" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
-                    <!-- Laminite -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-800">Laminite / Șchiopătări (cazuri active)</label>
-                            <span class="text-xs text-gray-500">Pierderi: scădere medie de 1.5 kg lapte/zi pe perioada lunii (30 de zile) + 300 LEi reformă.</span>
+                            <span class="text-xs text-gray-500">Pierderi: scădere medie de 1.5 kg lapte/zi pe perioada lunii (30 de zile) + 300 LEI reformă.</span>
                         </div>
                         <input type="number" id="cazuriLaminite" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
-                    <!-- Cetoze -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-800">Cetoze Clinice/Subclinice (cazuri depistate)</label>
@@ -76,7 +66,6 @@
                         <input type="number" id="cazuriCetoze" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
-                    <!-- Estru Ratat -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-2">
                         <div>
                             <label class="block text-sm font-bold text-gray-800">Cicluri de Estru Ratate (număr total în lună)</label>
@@ -91,9 +80,7 @@
                 </div>
             </div>
 
-            <!-- COLOANA DREAPTA: REZULTATE ȘI DOCUMENT PDF -->
             <div class="space-y-6">
-                <!-- Panou Afișare Total și Descărcare -->
                 <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg">
                     <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Total Pierderi Ascunse (Luna Trecută)</h3>
                     <div class="text-4xl font-extrabold text-emerald-400 mb-4" id="totalGeneral">0.00 LEI</div>
@@ -102,92 +89,83 @@
                     </button>
                 </div>
 
-                <!-- ELEMENTUL ȘABLON PENTRU EXPORTUL PDF -->
-                <div id="zonaDocumentPDF" class="bg-white p-6 rounded-2xl border border-gray-300 space-y-5">
-                    <div class="border-b-2 border-emerald-800 pb-2">
-                        <h2 class="text-xl font-bold text-emerald-900">RAPORT AUDIT ECONOMIC LUNAR</h2>
-                        <p class="text-xs text-gray-500">Analiză amănunțită a costurilor indirecte și ascunse din fermă</p>
+                <div id="zonaDocumentPDF" style="background-color: #ffffff; padding: 20px; font-family: sans-serif; color: #1f2937;">
+                    
+                    <div style="border-bottom: 2px solid #065f46; padding-bottom: 8px; margin-bottom: 15px;">
+                        <h2 style="font-size: 18px; font-bold: true; color: #065f46; margin: 0;">RAPORT AUDIT ECONOMIC LUNAR</h2>
+                        <p style="font-size: 11px; color: #6b7280; margin: 2px 0 0 0;">Analiză amănunțită a costurilor indirecte și ascunse din fermă</p>
                     </div>
 
-                    <!-- Defalcare cifre -->
-                    <div>
-                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">Defalcare Pierderi Recurente</h4>
-                        <div class="space-y-2 text-xs">
-                            <div class="flex justify-between border-b border-gray-100 pb-1">
-                                <span class="text-gray-600">🥛 Mastite (Lapte reținut + scădere)</span>
-                                <span class="font-bold text-gray-900" id="pdfMastita">0.00 LEI</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-100 pb-1">
-                                <span class="text-gray-600">🦶 Laminite (Scădere randament zilnic)</span>
-                                <span class="font-bold text-gray-900" id="pdfLaminite">0.00 LEI</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-100 pb-1">
-                                <span class="text-gray-600">🔋 Cetoze (Pierderi subclinice)</span>
-                                <span class="font-bold text-gray-900" id="pdfCetoze">0.00 LEI</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-100 pb-1">
-                                <span class="text-gray-600">🧬 Reproducție (Zile Goale generate)</span>
-                                <span class="font-bold text-gray-900" id="pdfEstru">0.00 LEI</span>
-                            </div>
-                            <div class="flex justify-between pt-1 border-t-2 border-gray-200 font-bold text-emerald-800">
-                                <span>TOTAL PIERDERI LUNARE:</span>
-                                <span id="pdfTotalText">0.00 LEI</span>
-                            </div>
-                        </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="font-size: 11px; color: #9ca3af; text-transform: uppercase; margin-bottom: 8px; font-weight: bold;">Defalcare Pierderi Recurente</h4>
+                        <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+                            <tr style="border-bottom: 1px solid #f3f4f6;">
+                                <td style="padding: 4px 0; color: #4b5563;">🥛 Mastite (Lapte reținut + scădere)</td>
+                                <td style="text-align: right; font-weight: bold;" id="pdfMastita">0.00 LEI</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f3f4f6;">
+                                <td style="padding: 4px 0; color: #4b5563;">🦶 Laminite (Scădere randament zilnic)</td>
+                                <td style="text-align: right; font-weight: bold;" id="pdfLaminite">0.00 LEI</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f3f4f6;">
+                                <td style="padding: 4px 0; color: #4b5563;">🔋 Cetoze (Pierderi subclinice)</td>
+                                <td style="text-align: right; font-weight: bold;" id="pdfCetoze">0.00 LEI</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f3f4f6;">
+                                <td style="padding: 4px 0; color: #4b5563;">🧬 Reproducție (Zile Goale generate)</td>
+                                <td style="text-align: right; font-weight: bold;" id="pdfEstru">0.00 LEI</td>
+                            </tr>
+                            <tr style="color: #065f46; font-weight: bold; font-size: 13px;">
+                                <td style="padding: 8px 0 0 0;">TOTAL PIERDERI LUNARE:</td>
+                                <td style="text-align: right; padding: 8px 0 0 0;" id="pdfTotalText">0.00 LEI</td>
+                            </tr>
+                        </table>
                     </div>
 
-                    <!-- GRAFICUL VIZUAL CU COLOANE DIFERITE CA ÎNĂLȚIME -->
-                    <div class="border-t border-gray-200 pt-3">
-                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-4">📈 Graficul Pierderilor pe Categorii</h4>
+                    <div style="margin-bottom: 25px; border-top: 1px solid #e5e7eb; pt-4: true; padding-top: 10px;">
+                        <h4 style="font-size: 11px; color: #9ca3af; text-transform: uppercase; margin-bottom: 15px; font-weight: bold;">📈 Graficul Pierderilor pe Categorii</h4>
                         
-                        <!-- Containerul principal al graficului vertical (Aliniat la bază prin items-end) -->
-                        <div class="flex justify-around items-end h-32 bg-gray-50 p-2 rounded-xl border border-gray-100">
-                            
-                            <!-- Coloana Mastite -->
-                            <div class="flex flex-col items-center w-12">
-                                <span id="procentMastita" class="text-[10px] font-bold text-gray-600 mb-1">0%</span>
-                                <div id="graficMastita" class="bg-blue-600 w-8 rounded-t transition-all duration-300" style="height: 0px;"></div>
-                                <span class="text-[9px] text-gray-500 mt-1">Mastite</span>
-                            </div>
-
-                            <!-- Coloana Laminite -->
-                            <div class="flex flex-col items-center w-12">
-                                <span id="procentLaminite" class="text-[10px] font-bold text-gray-600 mb-1">0%</span>
-                                <div id="graficLaminite" class="bg-amber-500 w-8 rounded-t transition-all duration-300" style="height: 0px;"></div>
-                                <span class="text-[9px] text-gray-500 mt-1">Laminite</span>
-                            </div>
-
-                            <!-- Coloana Cetoze -->
-                            <div class="flex flex-col items-center w-12">
-                                <span id="procentCetoze" class="text-[10px] font-bold text-gray-600 mb-1">0%</span>
-                                <div id="graficCetoze" class="bg-emerald-600 w-8 rounded-t transition-all duration-300" style="height: 0px;"></div>
-                                <span class="text-[9px] text-gray-500 mt-1">Cetoze</span>
-                            </div>
-
-                            <!-- Coloana Reproducție -->
-                            <div class="flex flex-col items-center w-12">
-                                <span id="procentEstru" class="text-[10px] font-bold text-gray-600 mb-1">0%</span>
-                                <div id="graficEstru" class="bg-purple-600 w-8 rounded-t transition-all duration-300" style="height: 0px;"></div>
-                                <span class="text-[9px] text-gray-500 mt-1">Repro.</span>
-                            </div>
-
-                        </div>
+                        <table style="width: 100%; height: 100px; text-align: center; vertical-align: bottom; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 25%; vertical-align: bottom; padding: 0 10px;">
+                                    <div id="procentMastita" style="font-size: 10px; font-weight: bold; color: #4b5563; margin-bottom: 4px;">0%</div>
+                                    <div id="graficMastita" style="background-color: #3b82f6; width: 30px; margin: 0 auto; height: 0px; border-radius: 4px 4px 0 0;"></div>
+                                </td>
+                                <td style="width: 25%; vertical-align: bottom; padding: 0 10px;">
+                                    <div id="procentLaminite" style="font-size: 10px; font-weight: bold; color: #4b5563; margin-bottom: 4px;">0%</div>
+                                    <div id="graficLaminite" style="background-color: #f59e0b; width: 30px; margin: 0 auto; height: 0px; border-radius: 4px 4px 0 0;"></div>
+                                </td>
+                                <td style="width: 25%; vertical-align: bottom; padding: 0 10px;">
+                                    <div id="procentCetoze" style="font-size: 10px; font-weight: bold; color: #4b5563; margin-bottom: 4px;">0%</div>
+                                    <div id="graficCetoze" style="background-color: #10b981; width: 30px; margin: 0 auto; height: 0px; border-radius: 4px 4px 0 0;"></div>
+                                </td>
+                                <td style="width: 25%; vertical-align: bottom; padding: 0 10px;">
+                                    <div id="procentEstru" style="font-size: 10px; font-weight: bold; color: #4b5563; margin-bottom: 4px;">0%</div>
+                                    <div id="graficEstru" style="background-color: #8b5cf6; width: 30px; margin: 0 auto; height: 0px; border-radius: 4px 4px 0 0;"></div>
+                                </td>
+                            </tr>
+                            <tr style="font-size: 10px; color: #6b7280;">
+                                <td style="padding-top: 6px;">Mastite</td>
+                                <td style="padding-top: 6px;">Laminite</td>
+                                <td style="padding-top: 6px;">Cetoze</td>
+                                <td style="padding-top: 6px;">Repro.</td>
+                            </tr>
+                        </table>
                     </div>
 
-                    <!-- Recomandări tehnologice -->
-                    <div class="border-t border-gray-200 pt-3 text-[11px] text-gray-700 space-y-1">
-                        <h4 class="font-bold text-emerald-800 uppercase tracking-wide">📡 Tehnologii Digitale Recomandate:</h4>
-                        <p>• <strong>Senzori de conductivitate electrică:</strong> Integrați în linia de muls (Mastite).</p>
-                        <p>• <strong>Pedometre active / Accelerometre 3D:</strong> Pentru laminite și detecție călduri.</p>
-                        <p>• <strong>Sisteme de monitorizare a rumegării:</strong> Pentru cetoza subclinică.</p>
+                    <div style="border-top: 1px solid #e5e7eb; padding-top: 10px; font-size: 11px; color: #374151; line-height: 1.4;">
+                        <h4 style="font-weight: bold; color: #065f46; text-transform: uppercase; margin: 0 0 5px 0;">📡 Tehnologii Digitale Recomandate:</h4>
+                        <p style="margin: 2px 0;">• <strong>Senzori de conductivitate:</strong> Integrați în linia de muls (Mastite).</p>
+                        <p style="margin: 2px 0;">• <strong>Pedometre active / Accelerometre 3D:</strong> Pentru șchiopătări și călduri.</p>
+                        <p style="margin: 2px 0;">• <strong>Sisteme de monitorizare a rumegării:</strong> Pentru cetoze subclinice.</p>
                     </div>
+
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- LOGICĂ JAVASCRIPT MODIFICATĂ PENTRU COLOANE VERTICALE -->
     <script>
         function calculeazaPierderi() {
             const pretLapte = parseFloat(document.getElementById('pretLapte').value) || 0;
@@ -214,8 +192,8 @@
             document.getElementById('pdfEstru').innerText = costEstru.toFixed(2) + ' LEI';
             document.getElementById('pdfTotalText').innerText = totalGeneral.toFixed(2) + ' LEI';
 
-            // Înălțimea maximă a graficului în pixeli (corespunde cu h-32 care are ~128px, lăsăm spațiu pentru text)
-            const inaltimeMaxPixeli = 90;
+            // Înălțimea maximă pe verticală în pixeli aprobată pentru tabel
+            const inaltimeMaxPixeli = 80;
 
             if (totalGeneral > 0) {
                 const pMastita = (costMastita / totalGeneral) * 100;
@@ -223,19 +201,17 @@
                 const pCetoze = (costCetoze / totalGeneral) * 100;
                 const pEstru = (costEstru / totalGeneral) * 100;
 
-                // Actualizare procente text
                 document.getElementById('procentMastita').innerText = pMastita.toFixed(0) + '%';
                 document.getElementById('procentLaminite').innerText = pLaminite.toFixed(0) + '%';
                 document.getElementById('procentCetoze').innerText = pCetoze.toFixed(0) + '%';
                 document.getElementById('procentEstru').innerText = pEstru.toFixed(0) + '%';
 
-                // Calcularea și aplicarea dinamică a înălțimii în pixeli (height) în funcție de ponderea din total
+                // Aplicare înălțime dinamică direct pe stilul elementelor
                 document.getElementById('graficMastita').style.height = (pMastita * inaltimeMaxPixeli / 100) + 'px';
                 document.getElementById('graficLaminite').style.height = (pLaminite * inaltimeMaxPixeli / 100) + 'px';
                 document.getElementById('graficCetoze').style.height = (pCetoze * inaltimeMaxPixeli / 100) + 'px';
                 document.getElementById('graficEstru').style.height = (pEstru * inaltimeMaxPixeli / 100) + 'px';
             } else {
-                // Resetare la 0 pixeli înălțime dacă nu există date
                 document.getElementById('procentMastita').innerText = '0%';
                 document.getElementById('procentLaminite').innerText = '0%';
                 document.getElementById('procentCetoze').innerText = '0%';
@@ -252,7 +228,7 @@
             calculeazaPierderi();
             const element = document.getElementById('zonaDocumentPDF');
             const opt = {
-                margin:       [0.4, 0.4],
+                margin:       [0.5, 0.5],
                 filename:     'Raport_Pierderi_Dairy_Audit.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
                 html2canvas:  { scale: 2, useCORS: true, logging: false },
