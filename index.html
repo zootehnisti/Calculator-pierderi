@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audit Pierderi Ascunse - Luna Anterioară</title>
+    <title>Dairy Audit - Luna Anterioară</title>
+    <!-- Tailwind CSS pentru design modern -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Versiune stabilă html2pdf.js pentru export PDF corect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen pb-12">
 
+    <!-- Header Aplicație -->
     <header class="bg-emerald-800 text-white shadow-md">
         <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center max-w-5xl">
             <div class="flex items-center space-x-3">
@@ -21,10 +24,13 @@
         </div>
     </header>
 
+    <!-- Conținut Principal -->
     <main class="container mx-auto px-4 py-8 max-w-5xl">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
+            <!-- COLOANA STÂNGA: INTRODUCERE DATE -->
             <div class="md:col-span-2 space-y-6">
+                <!-- Setări de bază -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                     <h3 class="text-base font-bold text-gray-900 mb-4 uppercase tracking-wider text-emerald-700">⚙️ Setări Lunare de Referință</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -39,37 +45,42 @@
                     </div>
                 </div>
 
+                <!-- Secțiune Date Patologii -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-5">
                     <h3 class="text-base font-bold text-gray-900 mb-2 uppercase tracking-wider text-emerald-700">📊 Cazuri Înregistrate în Luna Anterioară</h3>
 
+                    <!-- Mastite -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-800">Mastite Clinice (cazuri noi în lună)</label>
-                            <span class="text-xs text-gray-500">Pierderi deduse: 5 zile de lapte aruncat la muls + 10% scădere de producție pe restul lunii.</span>
+                            <span class="text-xs text-gray-500">Pierderi: 5 zile de lapte aruncat + 10% scădere de producție pe restul lunii.</span>
                         </div>
                         <input type="number" id="cazuriMastita" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
+                    <!-- Laminite -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-800">Laminite / Șchiopătări (cazuri active)</label>
-                            <span class="text-xs text-gray-500">Pierderi deduse: scădere medie de 1.5 kg lapte/zi pe perioada lunii (30 de zile) din cauza stresului și durerii.</span>
+                            <span class="text-xs text-gray-500">Pierderi: scădere medie de 1.5 kg lapte/zi pe perioada lunii (30 de zile) + 300 LEi reformă.</span>
                         </div>
                         <input type="number" id="cazuriLaminite" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
+                    <!-- Cetoze -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-800">Cetoze Clinice/Subclinice (cazuri depistate)</label>
-                            <span class="text-xs text-gray-500">Pierderi deduse: deficit metabolic invizibil ce cauzează o pierdere de ~2 kg lapte/zi pe parcursul lunii.</span>
+                            <span class="text-xs text-gray-500">Pierderi: deficit metabolic cu scădere de ~2 kg lapte/zi pe parcursul celor 30 de zile.</span>
                         </div>
                         <input type="number" id="cazuriCetoze" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
+                    <!-- Estru Ratat -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-2">
                         <div>
                             <label class="block text-sm font-bold text-gray-800">Cicluri de Estru Ratate (număr total în lună)</label>
-                            <span class="text-xs text-gray-500">Fiecare ciclu ratat adaugă 21 de zile goale. Cost de furajare/întreținere ineficientă evaluat la 17.50 LEI / zi goală.</span>
+                            <span class="text-xs text-gray-500">Fiecare ciclu ratat adaugă 21 de zile goale. Mentenanță ineficientă evaluată la 17.50 LEI / zi goală.</span>
                         </div>
                         <input type="number" id="estruRatat" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
@@ -80,7 +91,9 @@
                 </div>
             </div>
 
+            <!-- COLOANA DREAPTA: REZULTATE ȘI DOCUMENT PDF -->
             <div class="space-y-6">
+                <!-- Panou Afișare Total și Descărcare -->
                 <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg">
                     <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Total Pierderi Ascunse (Luna Trecută)</h3>
                     <div class="text-4xl font-extrabold text-emerald-400 mb-4" id="totalGeneral">0.00 LEI</div>
@@ -89,12 +102,14 @@
                     </button>
                 </div>
 
+                <!-- ELEMENTUL ȘABLON PENTRU EXPORTUL PDF -->
                 <div id="zonaDocumentPDF" class="bg-white p-6 rounded-2xl border border-gray-300 space-y-5">
                     <div class="border-b-2 border-emerald-800 pb-2">
                         <h2 class="text-xl font-bold text-emerald-900">RAPORT AUDIT ECONOMIC LUNAR</h2>
                         <p class="text-xs text-gray-500">Analiză amănunțită a costurilor indirecte și ascunse din fermă</p>
                     </div>
 
+                    <!-- Defalcare cifre -->
                     <div>
                         <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">Defalcare Pierderi Recurente</h4>
                         <div class="space-y-2 text-xs">
@@ -121,53 +136,50 @@
                         </div>
                     </div>
 
+                    <!-- GRAFICUL VIZUAL CU COLOANE DIFERITE CA ÎNĂLȚIME -->
                     <div class="border-t border-gray-200 pt-3">
-                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-3">📈 Graficul Pierderilor pe Categorii</h4>
-                        <div class="space-y-2 text-xs">
-                            <div>
-                                <div class="flex justify-between mb-0.5 text-gray-600">
-                                    <span>Mastite</span>
-                                    <span id="procentMastita">0%</span>
-                                </div>
-                                <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-                                    <div id="graficMastita" class="bg-blue-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
-                                </div>
+                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-4">📈 Graficul Pierderilor pe Categorii</h4>
+                        
+                        <!-- Containerul principal al graficului vertical (Aliniat la bază prin items-end) -->
+                        <div class="flex justify-around items-end h-32 bg-gray-50 p-2 rounded-xl border border-gray-100">
+                            
+                            <!-- Coloana Mastite -->
+                            <div class="flex flex-col items-center w-12">
+                                <span id="procentMastita" class="text-[10px] font-bold text-gray-600 mb-1">0%</span>
+                                <div id="graficMastita" class="bg-blue-600 w-8 rounded-t transition-all duration-300" style="height: 0px;"></div>
+                                <span class="text-[9px] text-gray-500 mt-1">Mastite</span>
                             </div>
-                            <div>
-                                <div class="flex justify-between mb-0.5 text-gray-600">
-                                    <span>Laminite</span>
-                                    <span id="procentLaminite">0%</span>
-                                </div>
-                                <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-                                    <div id="graficLaminite" class="bg-amber-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
-                                </div>
+
+                            <!-- Coloana Laminite -->
+                            <div class="flex flex-col items-center w-12">
+                                <span id="procentLaminite" class="text-[10px] font-bold text-gray-600 mb-1">0%</span>
+                                <div id="graficLaminite" class="bg-amber-500 w-8 rounded-t transition-all duration-300" style="height: 0px;"></div>
+                                <span class="text-[9px] text-gray-500 mt-1">Laminite</span>
                             </div>
-                            <div>
-                                <div class="flex justify-between mb-0.5 text-gray-600">
-                                    <span>Cetoze</span>
-                                    <span id="procentCetoze">0%</span>
-                                </div>
-                                <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-                                    <div id="graficCetoze" class="bg-emerald-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
-                                </div>
+
+                            <!-- Coloana Cetoze -->
+                            <div class="flex flex-col items-center w-12">
+                                <span id="procentCetoze" class="text-[10px] font-bold text-gray-600 mb-1">0%</span>
+                                <div id="graficCetoze" class="bg-emerald-600 w-8 rounded-t transition-all duration-300" style="height: 0px;"></div>
+                                <span class="text-[9px] text-gray-500 mt-1">Cetoze</span>
                             </div>
-                            <div>
-                                <div class="flex justify-between mb-0.5 text-gray-600">
-                                    <span>Reproducție (Estru Ratat)</span>
-                                    <span id="procentEstru">0%</span>
-                                </div>
-                                <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-                                    <div id="graficEstru" class="bg-purple-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
-                                </div>
+
+                            <!-- Coloana Reproducție -->
+                            <div class="flex flex-col items-center w-12">
+                                <span id="procentEstru" class="text-[10px] font-bold text-gray-600 mb-1">0%</span>
+                                <div id="graficEstru" class="bg-purple-600 w-8 rounded-t transition-all duration-300" style="height: 0px;"></div>
+                                <span class="text-[9px] text-gray-500 mt-1">Repro.</span>
                             </div>
+
                         </div>
                     </div>
 
+                    <!-- Recomandări tehnologice -->
                     <div class="border-t border-gray-200 pt-3 text-[11px] text-gray-700 space-y-1">
-                        <h4 class="font-bold text-emerald-800 uppercase tracking-wide">📡 Tehnologii Digitale Recomandate pentru Reducerea Pierderilor:</h4>
-                        <p>• <strong>Senzori de conductivitate electrică:</strong> Integrați în linia de muls pentru detectarea timpurie a mastitelor.</p>
-                        <p>• <strong>Pedometre active / Accelerometre 3D:</strong> Pentru depistarea timpurie a laminitelor și monitorizarea estrului.</p>
-                        <p>• <strong>Sisteme de monitorizare a rumegării:</strong> Pentru identificarea cetozei subclinice înainte de scăderea severă a laptelui.</p>
+                        <h4 class="font-bold text-emerald-800 uppercase tracking-wide">📡 Tehnologii Digitale Recomandate:</h4>
+                        <p>• <strong>Senzori de conductivitate electrică:</strong> Integrați în linia de muls (Mastite).</p>
+                        <p>• <strong>Pedometre active / Accelerometre 3D:</strong> Pentru laminite și detecție călduri.</p>
+                        <p>• <strong>Sisteme de monitorizare a rumegării:</strong> Pentru cetoza subclinică.</p>
                     </div>
                 </div>
             </div>
@@ -175,6 +187,7 @@
         </div>
     </main>
 
+    <!-- LOGICĂ JAVASCRIPT MODIFICATĂ PENTRU COLOANE VERTICALE -->
     <script>
         function calculeazaPierderi() {
             const pretLapte = parseFloat(document.getElementById('pretLapte').value) || 0;
@@ -185,7 +198,6 @@
             const cazuriCetoze = parseInt(document.getElementById('cazuriCetoze').value) || 0;
             const estruRatat = parseInt(document.getElementById('estruRatat').value) || 0;
 
-            // Formule pierderi lunare
             const laptePierdutMastitaLuna = (5 * prodMedie) + (25 * (prodMedie * 0.10));
             const costMastita = cazuriMastita * laptePierdutMastitaLuna * pretLapte;
 
@@ -195,7 +207,6 @@
 
             const totalGeneral = costMastita + costLaminite + costCetoze + costEstru;
 
-            // Afișare cifre text
             document.getElementById('totalGeneral').innerText = totalGeneral.toFixed(2) + ' LEI';
             document.getElementById('pdfMastita').innerText = costMastita.toFixed(2) + ' LEI';
             document.getElementById('pdfLaminite').innerText = costLaminite.toFixed(2) + ' LEI';
@@ -203,7 +214,9 @@
             document.getElementById('pdfEstru').innerText = costEstru.toFixed(2) + ' LEI';
             document.getElementById('pdfTotalText').innerText = totalGeneral.toFixed(2) + ' LEI';
 
-            // CALCUL ȘI RANDARE GRAFIC DINAMIC (Bare Progres)
+            // Înălțimea maximă a graficului în pixeli (corespunde cu h-32 care are ~128px, lăsăm spațiu pentru text)
+            const inaltimeMaxPixeli = 90;
+
             if (totalGeneral > 0) {
                 const pMastita = (costMastita / totalGeneral) * 100;
                 const pLaminite = (costLaminite / totalGeneral) * 100;
@@ -216,29 +229,28 @@
                 document.getElementById('procentCetoze').innerText = pCetoze.toFixed(0) + '%';
                 document.getElementById('procentEstru').innerText = pEstru.toFixed(0) + '%';
 
-                // Ajustare lățime bare grafice
-                document.getElementById('graficMastita').style.width = pMastita + '%';
-                document.getElementById('graficLaminite').style.width = pLaminite + '%';
-                document.getElementById('graficCetoze').style.width = pCetoze + '%';
-                document.getElementById('graficEstru').style.width = pEstru + '%';
+                // Calcularea și aplicarea dinamică a înălțimii în pixeli (height) în funcție de ponderea din total
+                document.getElementById('graficMastita').style.height = (pMastita * inaltimeMaxPixeli / 100) + 'px';
+                document.getElementById('graficLaminite').style.height = (pLaminite * inaltimeMaxPixeli / 100) + 'px';
+                document.getElementById('graficCetoze').style.height = (pCetoze * inaltimeMaxPixeli / 100) + 'px';
+                document.getElementById('graficEstru').style.height = (pEstru * inaltimeMaxPixeli / 100) + 'px';
             } else {
-                // Resetare dacă totul e 0
+                // Resetare la 0 pixeli înălțime dacă nu există date
                 document.getElementById('procentMastita').innerText = '0%';
                 document.getElementById('procentLaminite').innerText = '0%';
                 document.getElementById('procentCetoze').innerText = '0%';
                 document.getElementById('procentEstru').innerText = '0%';
-                document.getElementById('graficMastita').style.width = '0%';
-                document.getElementById('graficLaminite').style.width = '0%';
-                document.getElementById('graficCetoze').style.width = '0%';
-                document.getElementById('graficEstru').style.width = '0%';
+                
+                document.getElementById('graficMastita').style.height = '0px';
+                document.getElementById('graficLaminite').style.height = '0px';
+                document.getElementById('graficCetoze').style.height = '0px';
+                document.getElementById('graficEstru').style.height = '0px';
             }
         }
 
         function descarcaPDF() {
             calculeazaPierderi();
-            
             const element = document.getElementById('zonaDocumentPDF');
-            
             const opt = {
                 margin:       [0.4, 0.4],
                 filename:     'Raport_Pierderi_Dairy_Audit.pdf',
@@ -246,7 +258,6 @@
                 html2canvas:  { scale: 2, useCORS: true, logging: false },
                 jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
-
             html2pdf().from(element).set(opt).save();
         }
     </script>
