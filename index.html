@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audit pierderi ascunse - luna anterioară</title>
+    <title>Audit Pierderi Ascunse - Luna Anterioară</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -14,8 +14,8 @@
             <div class="flex items-center space-x-3">
                 <span class="text-3xl">🐄</span>
                 <div>
-                    <h1 class="text-2xl font-bold tracking-tight">Dairy Farm Audit</h1>
-                    <p class="text-xs text-emerald-100">Analiza pierderilor economice ascunse pe luna anterioară</p>
+                    <h1 class="text-2xl font-bold tracking-tight">EcoDairy Audit</h1>
+                    <p class="text-xs text-emerald-100">Analiza Pierderilor Economice Ascunse Strict pe Luna Anterioară</p>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
                         <div>
-                            <label class="block text-sm font-bold text-gray-800">Mastite clinice (cazuri noi în lună)</label>
+                            <label class="block text-sm font-bold text-gray-800">Mastite Clinice (cazuri noi în lună)</label>
                             <span class="text-xs text-gray-500">Pierderi deduse: 5 zile de lapte aruncat la muls + 10% scădere de producție pe restul lunii.</span>
                         </div>
                         <input type="number" id="cazuriMastita" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
@@ -60,7 +60,7 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b border-gray-100 pb-4">
                         <div>
-                            <label class="block text-sm font-bold text-gray-800">Cetoze clinice/subclinice (cazuri depistate)</label>
+                            <label class="block text-sm font-bold text-gray-800">Cetoze Clinice/Subclinice (cazuri depistate)</label>
                             <span class="text-xs text-gray-500">Pierderi deduse: deficit metabolic invizibil ce cauzează o pierdere de ~2 kg lapte/zi pe parcursul lunii.</span>
                         </div>
                         <input type="number" id="cazuriCetoze" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
@@ -68,24 +68,24 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-2">
                         <div>
-                            <label class="block text-sm font-bold text-gray-800">Cicluri de estru ratate (număr total în lună)</label>
+                            <label class="block text-sm font-bold text-gray-800">Cicluri de Estru Ratate (număr total în lună)</label>
                             <span class="text-xs text-gray-500">Fiecare ciclu ratat adaugă 21 de zile goale. Cost de furajare/întreținere ineficientă evaluat la 17.50 LEI / zi goală.</span>
                         </div>
                         <input type="number" id="estruRatat" value="0" min="0" class="w-full border border-gray-300 rounded-lg p-2 h-10 self-center focus:ring-2 focus:ring-emerald-500">
                     </div>
 
                     <button onclick="calculeazaPierderi()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl transition duration-200 shadow-md cursor-pointer text-center">
-                        Generează RAPORT
+                        Generează Raportul Lunar
                     </button>
                 </div>
             </div>
 
             <div class="space-y-6">
                 <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg">
-                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Total pierderi ascunse (luna anterioară)</h3>
+                    <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Total Pierderi Ascunse (Luna Trecută)</h3>
                     <div class="text-4xl font-extrabold text-emerald-400 mb-4" id="totalGeneral">0.00 LEI</div>
                     <button onclick="descarcaPDF()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 px-4 rounded-xl transition cursor-pointer text-center text-sm shadow-sm">
-                        📥 Descarcă RAPORT
+                        📥 Descarcă Raportul PDF
                     </button>
                 </div>
 
@@ -96,7 +96,7 @@
                     </div>
 
                     <div>
-                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">Defalcare pierderi recurente</h4>
+                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">Defalcare Pierderi Recurente</h4>
                         <div class="space-y-2 text-sm">
                             <div class="flex justify-between border-b border-gray-100 pb-1">
                                 <span class="text-gray-600">🥛 Mastite (Lapte reținut + scădere lunară)</span>
@@ -118,11 +118,11 @@
                     </div>
 
                     <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-                        <h4 class="text-xs font-bold text-emerald-900 uppercase mb-1">📡 Tehnologii digitale recomandate</h4>
+                        <h4 class="text-xs font-bold text-emerald-900 uppercase mb-1">📡 Tehnologii Digitale Recomandate</h4>
                         <p class="text-xs text-gray-600 leading-relaxed">
                             Pentru eliminarea acestor pierderi în lunile următoare, se sugerează implementarea de:
                             <br>• <strong>Senzori de conductivitate</strong> în linia de muls (Mastită).
-                            <br>• <strong>Pedometre / Accelerometre /strong> (detectare laminite și estru).
+                            <br>• <strong>Pedometre active / Accelerometre 3D</strong> (Laminite și detecție călduri).
                             <br>• <strong>Sisteme de monitorizare a rumegării</strong> (Cetoze subclinice).
                         </p>
                     </div>
@@ -154,4 +154,36 @@
             // 3. Cetoză: scădere de ~2 kg/zi timp de 30 de zile pe fondul deficitului energetic subclinic
             const costCetoze = cazuriCetoze * (2 * 30 * pretLapte);
 
-            // 4. Estru ratat: 21 de zile de
+            // 4. Estru ratat: 21 de zile de stagnare reproductivă (zile goale) multiplied by cost de oportunitate (17.50 LEI/zi)
+            const costEstru = estruRatat * (21 * 17.50);
+
+            // Suma Totală Generală a pierderilor ascunse
+            const totalGeneral = costMastita + costLaminite + costCetoze + costEstru;
+
+            // Actualizare DOM: Trimiterea rezultatelor financiare formatate cu sufixul 'LEI' direct pe interfață
+            document.getElementById('totalGeneral').innerText = totalGeneral.toFixed(2) + ' LEI';
+            document.getElementById('pdfMastita').innerText = costMastita.toFixed(2) + ' LEI';
+            document.getElementById('pdfLaminite').innerText = costLaminite.toFixed(2) + ' LEI';
+            document.getElementById('pdfCetoze').innerText = costCetoze.toFixed(2) + ' LEI';
+            document.getElementById('pdfEstru').innerText = costEstru.toFixed(2) + ' LEI';
+        }
+
+        function descarcaPDF() {
+            // Se rulează funcția de calcul pentru a securiza datele scrise în acel moment de fermier
+            calculeazaPierderi();
+            
+            const element = document.getElementById('zonaDocumentPDF');
+            const opt = {
+                margin:       0.5,
+                filename:     'Raport_Pierderi_Ascunse_Luna_Anterioara.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Conversie directă din HTML în PDF prin apelul librăriei dedicate
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>
